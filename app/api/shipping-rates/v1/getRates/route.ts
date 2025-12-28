@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 
-export async function POST() {
+export async function POST(req: Request) {
+  const body = await req.json().catch(() => ({}));
+  const currency = body?.currency || "BRL";
+
   return NextResponse.json({
     shippingRates: [
       {
@@ -8,7 +11,7 @@ export async function POST() {
         title: "Frete Padrão (Teste)",
         cost: {
           value: 29.9,
-          currency: "BRL"
+          currency
         },
         deliveryTime: {
           minDays: 5,
@@ -18,3 +21,4 @@ export async function POST() {
     ]
   });
 }
+
