@@ -7,18 +7,22 @@ export async function POST(req: Request) {
   return NextResponse.json({
     shippingRates: [
       {
-        code: "TEST_STD",
-        title: "Frete Padrão (Teste)",
+        code: "ME_STANDARD",
+        title: "Entrega Padrão",
         cost: {
           value: 29.9,
           currency
         },
         deliveryTime: {
-          minDays: 5,
+          minDays: 3,
           maxDays: 7
+        },
+        logistics: {
+          deliveryType: "DELIVERY"
         }
       }
     ]
   });
 }
+
 
