@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
+
+  // 🔍 LOG CRÍTICO: payload REAL que o Wix envia
+  console.log("WIX PAYLOAD:", JSON.stringify(body, null, 2));
+
   const currency = body?.currency || "BRL";
 
   return NextResponse.json({
@@ -24,5 +28,6 @@ export async function POST(req: Request) {
     ]
   });
 }
+
 
 
